@@ -1,0 +1,53 @@
+/* Estilos Infantiles Cisco Kids */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;900&display=swap');
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  user-select: none;
+}
+
+/* Animaciones */
+.nav-btn {
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.app-section {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#paintCanvas {
+  touch-action: none;
+}
+
+/* Barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fef3c7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f59e0b;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d97706;
+}

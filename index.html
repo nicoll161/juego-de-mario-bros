@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cisco Kids - Aprendiendo con diversión</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-amber-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- ENCABEZADO -->
+  <header class="bg-gradient-to-r from-rose-500 via-amber-400 to-sky-400 text-white p-4 shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <div class="bg-white p-2.5 rounded-2xl shadow-md">
+          <i class="fa-solid fa-graduation-cap text-3xl text-orange-500"></i>
+        </div>
+        <div>
+          <h1 class="text-3xl font-black tracking-wide drop-shadow-md">CISCO KIDS</h1>
+          <p class="text-xs md:text-sm font-bold bg-white/30 px-3 py-0.5 rounded-full inline-block shadow-inner">
+            ✨ Aprendiendo con diversión ✨
+          </p>
+        </div>
+      </div>
+
+      <nav class="flex flex-wrap justify-center gap-2 text-sm font-bold">
+        <button onclick="navTo('cuentos')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">📖 Cuentos</button>
+        <button onclick="navTo('mates')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🔢 Mates</button>
+        <button onclick="navTo('ciencias')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🧪 Ciencias</button>
+        <button onclick="navTo('lenguaje')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🔤 Lenguaje</button>
+        <button onclick="navTo('geografia')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🌍 Geografía</button>
+        <button onclick="navTo('pintar')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🎨 Pintar</button>
+        <button onclick="navTo('juegos')" class="nav-btn bg-white/20 hover:bg-white text-slate-800 px-3 py-1.5 rounded-full transition">🎮 Juegos</button>
+      </nav>
+
+      <div class="flex items-center gap-2 bg-yellow-300 text-slate-900 font-extrabold px-4 py-2 rounded-full shadow-md">
+        <i class="fa-solid fa-star text-yellow-600 text-xl animate-bounce"></i>
+        <span id="starCount" class="text-lg">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto p-4 md:p-6 flex-1 w-full">
+
+    <!-- CUENTOS NARRADOS -->
+    <section id="cuentos" class="app-section">
+      <div class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-book-open"></i> Biblioteca de Cuentos Narrados</h2>
+        <p class="opacity-90">Presiona "Escuchar Cuento" para que la voz lea la historia por ti.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Cuento 1 -->
+        <div class="bg-white rounded-3xl p-5 shadow-lg border-4 border-purple-200 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-52 bg-purple-100 rounded-2xl mb-4 flex items-center justify-center p-4">
+              <svg viewBox="0 0 200 150" class="w-full h-full max-h-48">
+                <circle cx="100" cy="80" r="50" fill="#a855f7" />
+                <circle cx="85" cy="70" r="8" fill="#ffffff" /><circle cx="85" cy="70" r="4" fill="#000000" />
+                <circle cx="115" cy="70" r="8" fill="#ffffff" /><circle cx="115" cy="70" r="4" fill="#000000" />
+                <path d="M 80 90 Q 100 110 120 90" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" />
+                <path d="M 100 110 L 90 140 L 110 140 Z" fill="#f43f5e" />
+                <circle cx="100" cy="105" r="15" fill="#f43f5e" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-purple-700 mb-2">1. El Dragón que Comía Helados</h3>
+            <p id="story1-text" class="text-slate-600 mb-4 leading-relaxed text-sm md:text-base">
+              En lo alto de las Montañas Azucaradas vivía Chispa, un dragoncito muy especial. A diferencia de sus hermanos mayores, Chispa no echaba fuego brillante por la boca, ¡sino riquísimo helado de fresa y vainilla!<br><br>
+              Al principio, Chispa se sentía un poco triste por ser diferente. Pero cuando llegó el verano caluroso, todos los animales del bosque mágico subieron a la montaña acalorados. Chispa les preparó conos gigantes de helado para refrescarlos. Ese día, descubrió que ser diferente era su superpoder más especial.
+            </p>
+          </div>
+          <div class="flex gap-2 mt-2">
+            <button onclick="speakText('story1-text')" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-volume-high"></i> Escuchar Cuento
+            </button>
+            <button onclick="stopSpeech()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-4 rounded-xl shadow">
+              <i class="fa-solid fa-stop"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cuento 2 -->
+        <div class="bg-white rounded-3xl p-5 shadow-lg border-4 border-indigo-200 flex flex-col justify-between">
+          <div>
+            <div class="w-full h-52 bg-slate-900 rounded-2xl mb-4 flex items-center justify-center p-4">
+              <svg viewBox="0 0 200 150" class="w-full h-full max-h-48">
+                <circle cx="40" cy="30" r="2" fill="#ffffff" /><circle cx="160" cy="40" r="3" fill="#fef08a" />
+                <path d="M 80 130 L 120 130 L 100 30 Z" fill="#38bdf8" />
+                <circle cx="100" cy="70" r="12" fill="#ffffff" /><circle cx="100" cy="70" r="8" fill="#0284c7" />
+                <polygon points="100,10 80,40 120,40" fill="#f43f5e" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-indigo-700 mb-2">2. El Osito Barnaby en la Luna</h3>
+            <p id="story2-text" class="text-slate-600 mb-4 leading-relaxed text-sm md:text-base">
+              Barnaby era un osito de peluche que soñaba cada noche con explorar las estrellas. Con ayuda de cajas de cartón, cinta brillante y mucha paciencia, construyó una nave espacial en el patio de su casa.<br><br>
+              Una noche estrellada, cerró sus ojos y despegó hacia la Luna. Allí encontró cráteres llenos de gelatina de uva y cometas que dejaban destellos de luz. Barnaby aprendió que con determinación, imaginación y alegría, ningún sueño está demasiado lejos.
+            </p>
+          </div>
+          <div class="flex gap-2 mt-2">
+            <button onclick="speakText('story2-text')" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-volume-high"></i> Escuchar Cuento
+            </button>
+            <button onclick="stopSpeech()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold px-4 rounded-xl shadow">
+              <i class="fa-solid fa-stop"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MATEMÁTICAS -->
+    <section id="mates" class="app-section hidden">
+      <div class="bg-gradient-to-r from-orange-400 to-amber-500 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-calculator"></i> Matemáticas Fáciles</h2>
+        <p class="opacity-90">Aprende Sumas, Restas, Multiplicación y División jugando.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-lg border-4 border-orange-200">
+        <h3 class="text-2xl font-bold text-orange-600 mb-2">Visualizador de Sumas</h3>
+        <p class="mb-4 text-slate-600">Sumar significa juntar dos cantidades para obtener el total.</p>
+        <div class="bg-orange-50 p-6 rounded-2xl flex flex-wrap items-center justify-center gap-4 text-2xl font-bold mb-6">
+          <div class="text-center bg-white p-3 rounded-xl border">🍎🍎<br><span class="text-xs">2 Manzanas</span></div>
+          <div class="text-orange-500 text-3xl">+</div>
+          <div class="text-center bg-white p-3 rounded-xl border">🍎🍎🍎<br><span class="text-xs">3 Manzanas</span></div>
+          <div class="text-orange-500 text-3xl">=</div>
+          <div class="text-center bg-orange-100 p-3 rounded-xl border-2 border-orange-400 text-orange-700">🍎🍎🍎🍎🍎<br><span class="text-xs">5 Manzanas</span></div>
+        </div>
+      </div>
+
+      <div class="mt-6 bg-white p-6 rounded-3xl shadow-lg border-4 border-amber-200 text-center">
+        <h3 class="text-2xl font-bold text-amber-700 mb-2">¡Resuelve la operación!</h3>
+        <div class="text-5xl font-black my-4 text-slate-800 tracking-wider" id="mathQuestion">3 + 2 = ?</div>
+        <div class="flex justify-center gap-4 flex-wrap" id="mathOptions"></div>
+      </div>
+    </section>
+
+    <!-- CIENCIAS -->
+    <section id="ciencias" class="app-section hidden">
+      <div class="bg-gradient-to-r from-emerald-400 to-teal-500 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-flask"></i> Ciencias y Naturaleza</h2>
+        <p class="opacity-90">Aprende sobre animales, plantas y el universo.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-5 rounded-3xl shadow-lg border-4 border-emerald-200 text-center">
+          <div class="text-6xl mb-3">🦁 🐘 🐬</div>
+          <h3 class="text-xl font-bold text-emerald-700">El Reino Animal</h3>
+          <p class="text-xs text-slate-600 mt-2">Los animales se dividen en mamíferos, aves, peces, reptiles y anfibios.</p>
+        </div>
+        <div class="bg-white p-5 rounded-3xl shadow-lg border-4 border-teal-200 text-center">
+          <div class="text-6xl mb-3">☀️ 🌍 🪐</div>
+          <h3 class="text-xl font-bold text-teal-700">El Sistema Solar</h3>
+          <p class="text-xs text-slate-600 mt-2">La Tierra gira alrededor del Sol junto a otros 7 planetas maravillosos.</p>
+        </div>
+        <div class="bg-white p-5 rounded-3xl shadow-lg border-4 border-green-200 text-center">
+          <div class="text-6xl mb-3">🌱 🌻 🌳</div>
+          <h3 class="text-xl font-bold text-green-700">Las Plantas</h3>
+          <p class="text-xs text-slate-600 mt-2">Fabrican aire puro y su propio alimento usando luz solar y agua.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LENGUAJE -->
+    <section id="lenguaje" class="app-section hidden">
+      <div class="bg-gradient-to-r from-sky-400 to-blue-500 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-font"></i> Lenguaje e Inglés</h2>
+        <p class="opacity-90">Haz clic en cada tarjeta para escuchar la pronunciación.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-lg border-4 border-sky-200">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div onclick="speakText('Perro, Dog')" class="bg-sky-50 p-4 rounded-2xl text-center cursor-pointer hover:scale-105 transition shadow border border-sky-200">
+            <span class="text-5xl">🐶</span>
+            <div class="font-bold text-slate-800 text-lg mt-2">Perro</div>
+            <div class="text-sky-600 font-extrabold">Dog</div>
+          </div>
+          <div onclick="speakText('Gato, Cat')" class="bg-sky-50 p-4 rounded-2xl text-center cursor-pointer hover:scale-105 transition shadow border border-sky-200">
+            <span class="text-5xl">🐱</span>
+            <div class="font-bold text-slate-800 text-lg mt-2">Gato</div>
+            <div class="text-sky-600 font-extrabold">Cat</div>
+          </div>
+          <div onclick="speakText('Manzana, Apple')" class="bg-sky-50 p-4 rounded-2xl text-center cursor-pointer hover:scale-105 transition shadow border border-sky-200">
+            <span class="text-5xl">🍎</span>
+            <div class="font-bold text-slate-800 text-lg mt-2">Manzana</div>
+            <div class="text-sky-600 font-extrabold">Apple</div>
+          </div>
+          <div onclick="speakText('Sol, Sun')" class="bg-sky-50 p-4 rounded-2xl text-center cursor-pointer hover:scale-105 transition shadow border border-sky-200">
+            <span class="text-5xl">☀️</span>
+            <div class="font-bold text-slate-800 text-lg mt-2">Sol</div>
+            <div class="text-sky-600 font-extrabold">Sun</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GEOGRAFÍA -->
+    <section id="geografia" class="app-section hidden">
+      <div class="bg-gradient-to-r from-rose-400 to-red-500 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-earth-americas"></i> Geografía del Mundo</h2>
+        <p class="opacity-90">Conoce los continentes de nuestro planeta.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-lg border-4 border-rose-200">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 bg-rose-50 rounded-2xl border border-rose-200">
+            <h4 class="font-bold text-rose-800 text-lg">🌎 América</h4>
+            <p class="text-xs text-slate-600 mt-2">Contiene majestuosas selvas como el Amazonas y altas montañas.</p>
+          </div>
+          <div class="p-5 bg-rose-50 rounded-2xl border border-rose-200">
+            <h4 class="font-bold text-rose-800 text-lg">🌍 Europa</h4>
+            <p class="text-xs text-slate-600 mt-1">Lleno de historia, castillos antiguos y hermosas ciudades.</p>
+          </div>
+          <div class="p-5 bg-rose-50 rounded-2xl border border-rose-200">
+            <h4 class="font-bold text-rose-800 text-lg">🌏 África</h4>
+            <p class="text-xs text-slate-600 mt-1">El hogar de los leones, jirafas y las gigantescas pirámides.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TALLER DE PINTAR -->
+    <section id="pintar" class="app-section hidden">
+      <div class="bg-gradient-to-r from-pink-500 to-rose-400 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-paint-brush"></i> Taller Creativo de Pintar</h2>
+        <p class="opacity-90">¡Dibuja y pinta lo que quieras sobre el lienzo!</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-lg border-4 border-pink-200">
+        <div class="flex flex-wrap gap-3 items-center mb-4 bg-pink-50 p-3 rounded-2xl">
+          <label class="font-bold text-pink-700">Color:</label>
+          <input type="color" id="paintColor" value="#ff0055" class="w-10 h-10 rounded-lg cursor-pointer border-0">
+          
+          <label class="font-bold text-pink-700 ml-3">Grosor:</label>
+          <input type="range" id="brushSize" min="2" max="30" value="8" class="accent-pink-500">
+
+          <button onclick="clearCanvas()" class="ml-auto bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-4 rounded-xl text-sm transition">
+            <i class="fa-solid fa-trash"></i> Borrar Todo
+          </button>
+        </div>
+
+        <div class="border-4 border-dashed border-pink-300 rounded-2xl overflow-hidden bg-white shadow-inner">
+          <canvas id="paintCanvas" width="800" height="400" class="w-full h-80 md:h-96 cursor-crosshair"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- JUEGOS Y TRIVIA -->
+    <section id="juegos" class="app-section hidden">
+      <div class="bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-3xl p-6 shadow-xl mb-6">
+        <h2 class="text-3xl font-extrabold mb-2"><i class="fa-solid fa-gamepad"></i> Trivia Cisco Kids</h2>
+        <p class="opacity-90">Responde preguntas correctas para acumular estrellas.</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-3xl shadow-lg border-4 border-purple-200">
+        <div id="quizContainer">
+          <span id="quizBadge" class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">Pregunta 1</span>
+          <h3 id="quizQuestion" class="text-2xl font-bold text-slate-800 my-4">¿Cuál es el planeta donde vivimos?</h3>
+          <div id="quizOptions" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-slate-800 text-white p-6 text-center mt-12">
+    <p class="font-bold text-lg mb-1">Cisco Kids - Aprendiendo con diversión</p>
+    <p class="text-xs text-slate-400">Plataforma educativa para niños exploradores 🚀</p>
+  </footer>
+
+  <script>
+    let stars = 0;
+
+    function addStars(num) {
+      stars += num;
+      document.getElementById('starCount').innerText = stars;
+      confetti({ particleCount: 60, spread: 70, origin: { y: 0.8 } });
+    }
+
+    function navTo(sectionId) {
+      document.querySelectorAll('.app-section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    function speakText(elementIdOrText) {
+      window.speechSynthesis.cancel();
+      let text = elementIdOrText;
+      const el = document.getElementById(elementIdOrText);
+      if (el) text = el.innerText;
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'es-ES';
+      utterance.rate = 0.9;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopSpeech() {
+      window.speechSynthesis.cancel();
+    }
+
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let painting = false;
+
+    function startPosition(e) { painting = true; draw(e); }
+    function finishedPosition() { painting = false; ctx.beginPath(); }
+
+    function draw(e) {
+      if (!painting) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.clientX || e.touches[0].clientX) - rect.left;
+      const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+      ctx.lineWidth = document.getElementById('brushSize').value;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = document.getElementById('paintColor').value;
+
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
+
+    canvas.addEventListener('mousedown', startPosition);
+    canvas.addEventListener('mouseup', finishedPosition);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('touchstart', startPosition);
+    canvas.addEventListener('touchend', finishedPosition);
+    canvas.addEventListener('touchmove', draw);
+
+    function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+    function generateMathProblem() {
+      const a = Math.floor(Math.random() * 5) + 1;
+      const b = Math.floor(Math.random() * 5) + 1;
+      const ans = a + b;
+
+      document.getElementById('mathQuestion').innerText = `${a} + ${b} = ?`;
+      const optsDiv = document.getElementById('mathOptions');
+      optsDiv.innerHTML = '';
+
+      const options = [ans, ans + 1, Math.max(1, ans - 1)];
+      options.sort(() => Math.random() - 0.5);
+
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = "bg-amber-400 hover:bg-amber-500 text-slate-900 font-black text-2xl py-3 px-8 rounded-2xl shadow-md transition";
+        btn.innerText = opt;
+        btn.onclick = () => {
+          if (opt === ans) {
+            alert('¡Excelente! 🎉 Ganaste 5 estrellas');
+            addStars(5);
+            generateMathProblem();
+          } else {
+            alert('¡Casi! Inténtalo otra vez 😊');
+          }
+        };
+        optsDiv.appendChild(btn);
+      });
+    }
+
+    const quizData = [
+      { q: "¿Cuál es el planeta donde vivimos?", opts: ["Marte", "Tierra", "Júpiter", "Luna"], ans: 1 },
+      { q: "¿Cuánto es 5 - 2?", opts: ["2", "3", "4", "1"], ans: 1 },
+      { q: "¿Qué animal dice 'Miau'?", opts: ["Perro", "Vaca", "Gato", "Pájaro"], ans: 2 }
+    ];
+
+    let currentQuiz = 0;
+
+    function loadQuiz() {
+      const q = quizData[currentQuiz];
+      document.getElementById('quizBadge').innerText = `Pregunta ${currentQuiz + 1} de ${quizData.length}`;
+      document.getElementById('quizQuestion').innerText = q.q;
+
+      const optsContainer = document.getElementById('quizOptions');
+      optsContainer.innerHTML = '';
+
+      q.opts.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "bg-purple-50 hover:bg-purple-200 border-2 border-purple-300 text-slate-800 font-bold p-4 rounded-2xl text-left transition";
+        btn.innerText = opt;
+        btn.onclick = () => {
+          if (idx === q.ans) {
+            addStars(10);
+            if (currentQuiz < quizData.length - 1) {
+              currentQuiz++;
+              loadQuiz();
+            } else {
+              alert('🏆 ¡Completaste toda la trivia!');
+              currentQuiz = 0;
+              loadQuiz();
+            }
+          } else {
+            alert('¡Sigue intentando!');
+          }
+        };
+        optsContainer.appendChild(btn);
+      });
+    }
+
+    generateMathProblem();
+    loadQuiz();
+  </script>
+</body>
+</html>>
